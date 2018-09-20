@@ -33,8 +33,8 @@ class Lottery extends Component {
 
     }
     handleGenEuroNumbers() {
-        let missE =this.state.euro.slice(0,5).filter(x => x !== 0);
-        let missS = this.state.euro.slice(5).filter(x => x !== 0);
+        let missE =this.state.euro.slice(0,5).filter(x => x !== 0 && x !== '');
+        let missS = this.state.euro.slice(5).filter(x => x !== 0 && x !== '');
         console.log(missE);
         console.log(missS);
         let ne = onetoNRandom(5,50,missE);
