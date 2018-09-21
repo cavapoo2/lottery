@@ -18,9 +18,13 @@ class Lottery extends Component {
             lotto: [
                 0, 0, 0, 0, 0, 0
             ],
+            lottoRes:[
+                0,0,0,0,0,0
+            ],
         }
         this.handleEuroChange = this.handleEuroChange.bind(this);
         this.handleGenEuroNumbers = this.handleGenEuroNumbers.bind(this);
+        this.handleGenLottoNumbers = this.handleGenLottoNumbers.bind(this);
     }
     setBlankOrValue (value) {
         if(parseInt(value,10).toString() === 'NaN'){
@@ -62,9 +66,17 @@ class Lottery extends Component {
             ...this.state,
             euroRes: [...ne.concat(ns)],
         });
-
-
     }
+    handleGenLottoNumbers() {
+        let missL = this.state.lotto.filter(x => x !== 0 && x !== '');
+        let nl = onetoNRandom(6, 59, missL);
+        this.setState({
+            ...this.state,
+            lottoRes: [...nl],
+        });
+    }
+
+
     handleDebug({ target }) {
         console.log(this.state.euro);
     }
@@ -84,13 +96,22 @@ class Lottery extends Component {
                 <div className="BallsDiv">
                     <h3>Your Numbers are:</h3>
                     <br />
-                    <NumberCircle nums={this.state.euroRes} />
+                    <NumberCircle size={this.state.euro.length-2} nums={this.state.euroRes} />
                 </div>
                 <br />
                 <div><h2 className="subTitle">Lotto</h2></div>
                 <div><em className="subText">Choose some numbers you would like to include in your lucky dip if you like (6 numbers 1 to 59)</em></div>
                 <br />
                 <TableNums name="lotto" size={this.state.lotto.length} euro={this.state.lotto} func={this.handleEuroChange} />
+                <br />
+                <div className="ButtonDiv">
+                    <button className="GenButton" onClick={this.handleGenLottoNumbers} type="button">Generate</button>
+                </div>
+                <div className="BallsDiv">
+                    <h3>Your Numbers are:</h3>
+                    <br />
+                    <NumberCircle size={this.state.lotto.length} nums={this.state.lottoRes} />
+                </div>
 
                 <div><button type="button" onClick={(e) => this.handleDebug(e)}></button></div>
             </div>

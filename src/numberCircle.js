@@ -17,8 +17,9 @@ class NumberCircle extends Component {
 class NumberCircle extends Component {
     render() {
         let i=0;
+        let {size} = this.props;
         let x = this.props.nums.map((num,idx) => {
-            if(idx < 5) {
+            if(idx < size) {
                 return (
                      <div key={i++} className="circle">
                         <div className="aligner">
