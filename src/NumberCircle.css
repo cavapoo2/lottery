@@ -28,6 +28,10 @@ div { box-sizing: border-box; }
     border-radius: 500px; 
     margin: 0.5em;
 }
+.circleG:hover {
+ background-color:yellow;
+  border-style: dotted;
+}
 
 .circle:hover {
   background-color: #008000;
