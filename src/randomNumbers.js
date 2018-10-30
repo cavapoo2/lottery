@@ -15,7 +15,7 @@ export function onetoNRandom(size,max,miss) {
         if(res.length > 0 && res.includes(next)) continue;
         res.push(next);
     }
-    return res.sort((a,b) => a > b);
+    return res.sort((a,b) => a - b);
 }
 
 /*
